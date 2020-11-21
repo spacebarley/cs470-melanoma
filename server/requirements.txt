@@ -1,0 +1,9 @@
+torch==1.7.0
+Flask==1.1.2
+torchtoolbox==0.1.5
+torchvision==0.8.1
+pandas==1.1.4
+matplotlib==3.3.3
+seaborn==0.11.0
+efficientnet-pytorch==0.7.0
+timm==0.3.1
