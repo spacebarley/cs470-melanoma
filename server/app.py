@@ -8,10 +8,12 @@ from torchvision import models
 import torchvision.transforms as transforms
 from PIL import Image
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 import timm
 
 app = Flask(__name__)
+CORS(app)
 
 model_path = './trained/test.pt'
 num_classes = 2
