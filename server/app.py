@@ -47,7 +47,7 @@ def predict():
         file = request.files['file']
         img_bytes = file.read()
         possibility = get_prediction(image_bytes=img_bytes)
-        return jsonify({'melanoma_propability': str(possibility)})
+        return jsonify({'melanoma_probability': str(possibility)})
 
 
 if __name__ == '__main__':
