@@ -16,4 +16,4 @@ From another tab, send the image file in a request:
 
 It will return the possibility of melanoma predicted by given model.
 
-    {"melanoma_propability":"0.5218048"}
+    {"melanoma_probability":"0.5218048"}
