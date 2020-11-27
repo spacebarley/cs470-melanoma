@@ -43,20 +43,20 @@
             Request
           </v-btn>
 
-          <div v-if="testComplete" style="margin:20px">
-            <h2>Melanoma probability : {{melanomaResult}}</h2>
+          <div v-if="testComplete" style="margin-top:20px; margin-bottom:5px;">
+            <h3>Melanoma probability : </h3><h1><strong>{{melanomaResult}}</strong></h1>
           </div>
           <div v-if="testComplete && melanomaProbability < 30">
-            <h2>Thankfully the mole does not seems to be melanoma.</h2>
+            <h1 style="color:green">The mole does not seem to be melanoma.</h1>
           </div>
           <div v-else-if="testComplete && melanomaProbability < 60">
-            <h2>It is possible that the picture contains melanoma. It is recommended to seek detailed examination at a medical center.</h2>
+            <h1 style="color:orange">It is possible that the picture contains melanoma.<br>We recommend you to have a detailed examination later.</h1>
           </div>
           <div v-else-if="testComplete && melanomaProbability < 100">
-            <h2>It is very likely that the mole is melanoma. It is recommended to have a detailed examination at a medical center immediately.</h2>
+            <h1 style="color:red">It is very likely that the mole is melanoma.<br>We strongly recommend you to have a detailed examination immediately.</h1>
           </div>
-          <div v-if="testComplete" id="melanoma-info">
-            <h2>Know more about melanoma</h2>
+          <div v-if="testComplete" id="melanoma-info" style="margin-top:35px;">
+            <h2 style="color:gray">Know more about melanoma</h2>
             <div>
               <p><b>Q. Why detecting melanoma early is important?</b></p>
               <p>A. melanoma is more dangerous because of its ability to spread to other organs more rapidly if it is not treated at an early stage.<br/>5-year survival rate for patients in the U.S. whose melanoma is detected early. The survival rate drops to 65% if the disease reaches the lymph nodes and 25% if it spreads to distant organs.</p>

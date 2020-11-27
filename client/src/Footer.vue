@@ -12,7 +12,6 @@
     >
       <v-btn
         color="white"
-        text
         rounded
         href="https://github.com/spacebarley/cs470-melanoma"
       >
