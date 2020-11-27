@@ -122,7 +122,20 @@ export default {
     },
 
     onClickRequest() {
-      this.requestHandler()
+      this.requestMelanoma()
+    },
+
+    requestMelanoma() {
+      let loader = this.$loading.show({
+        // Optional parameters
+        container: null,
+        canCancel: false,
+      });
+      // simulate AJAX
+      setTimeout(() => {
+        loader.hide()
+        this.requestHandler()
+      },1000)                 
     },
 
     requestHandler() {

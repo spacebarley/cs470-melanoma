@@ -13,6 +13,7 @@
     "axios": "^0.21.0",
     "vue": "^2.5.11",
     "vue-image-upload-resize": "^2.3.0",
+    "vue-loading-overlay": "^3.4.2",
     "vuetify": "^2.3.19"
   },
   "browserslist": [
