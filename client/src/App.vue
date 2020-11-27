@@ -33,6 +33,23 @@
                 }}</span>
               </label>
             </image-uploader>
+            <metadata-uploader>
+              Sex: <select v-model="selectedSex">
+                <option v-for="option in sexOptions" v-bind:value="option.value">
+                  {{ option.text }}
+                </option>
+              </select>
+              Age: <select v-model="selectedAge">
+                <option v-for="option in ageOptions" v-bind:value="option.value">
+                  {{ option.text }}
+                </option>
+              </select>
+              Site: <select v-model="selectedSite">
+                <option v-for="option in siteOptions" v-bind:value="option.value">
+                  {{ option.text }}
+                </option>
+              </select>
+            </metadata-uploader>
           </div>
           <v-btn
             color="primary"
@@ -115,6 +132,33 @@ export default {
       melanomaResult: '',
       melanomaProbability: -1,
       testComplete: false,
+      sexOptions: [
+        {text: 'Male', value: 'Male' },
+        {text: 'Female', value: 'Female' }
+      ],
+      ageOptions: [
+        {text: '0~9', value: '0' },
+        {text: '10~19', value: '10' },
+        {text: '20~29', value: '20' },
+        {text: '30~39', value: '30' },
+        {text: '40~49', value: '40' },
+        {text: '50~59', value: '50' },
+        {text: '60~69', value: '60' },
+        {text: '70~79', value: '70' },
+        {text: '80~89', value: '80' },
+        {text: '90~99', value: '90' },
+      ],
+      siteOptions: [
+        {text: 'head/neck', value: 'head'},
+        {text: 'upper extremity', value: 'upper'},
+        {text: 'lower extremity', value: 'lower'},
+        {text: 'torso', value: 'torso'},
+        {text: 'palms/soles', value: 'palms'},
+        {text: 'oral/genital', value: 'oral'}
+      ],
+      selectedSex: 'Male',
+      selectedAge: '20',
+      selectedSite: 'head'
     }
   },
   methods: {
@@ -140,7 +184,8 @@ export default {
     },
 
     requestHandler() {
-      melanoma.request(this.selectedFile)
+      let metadata = {'sex': this.selectedSex, 'age': this.selectedAge, 'site': this.selectedSite}
+      melanoma.request(this.selectedFile, this.selectedSex, this.selectedAge, this.selectedSite)
         .then(response => {
           let probability = parseFloat(response.data.melanoma_probability) * 100
           this.melanomaProbability = probability
