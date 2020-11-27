@@ -43,7 +43,8 @@
             Request
           </v-btn>
 
-          <div v-if="testComplete" style="margin-top:20px; margin-bottom:5px;">
+          <div id="testResult" style="height:20px; margin-top:20px"></div>
+          <div v-if="testComplete" style="margin-bottom:5px;">
             <h3>Melanoma probability : </h3><h1><strong>{{melanomaResult}}</strong></h1>
           </div>
           <div v-if="testComplete && melanomaProbability < 30">
@@ -146,6 +147,7 @@ export default {
           probability = probability.toFixed(1)
           this.melanomaResult = `${probability}%`
           this.testComplete = true
+          this.$scrollTo(document.getElementById('testResult'), 500, {})
         })
         .catch(error => {
           console.log(error)
@@ -162,7 +164,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 #fileInput {
