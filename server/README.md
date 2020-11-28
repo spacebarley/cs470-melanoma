@@ -12,7 +12,7 @@ Run the Flask server:
 
 From another tab, send the image file in a request:
 
-    curl -X POST -F file=@ISIC_0149568.jpeg http://localhost:5000/predict
+    curl --location --request POST 'localhost:5000/predict' --form 'sex="Male"' --form 'age="20"' --form 'site="head"' --form 'file=@ISIC_0149568.jpeg"'
 
 It will return the possibility of melanoma predicted by given model.
 
