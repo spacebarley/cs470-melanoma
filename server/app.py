@@ -71,16 +71,19 @@ def one_hot_site(site):
     else: assert(0)
 
 def get_prediction(image_bytes, sex, age, site):
-    image = transform_image(image_bytes=image_bytes)
     arr_sex = one_hot_sex(sex)
     arr_age = one_hot_age(age)
     arr_site = one_hot_site(site)
     metadata = np.array(arr_sex + arr_age + arr_site).astype(np.float32)
     metadata = torch.from_numpy(metadata).unsqueeze(0)
 
-    outputs = model(image, metadata)
-    output = torch.softmax(outputs, 1).cpu().detach().numpy()[:, 1][0]
-    return output
+    # Iterate to give randomly transformed image
+    output = 0
+    for i in range(10):
+        image = transform_image(image_bytes=image_bytes)
+        outputs = model(image, metadata)
+        output += torch.softmax(outputs, 1).cpu().detach().numpy()[:, 1][0]
+    return output / 10
 
 
 @app.route('/predict', methods=['POST'])
