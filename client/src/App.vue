@@ -184,7 +184,6 @@ export default {
     },
 
     requestHandler() {
-      let metadata = {'sex': this.selectedSex, 'age': this.selectedAge, 'site': this.selectedSite}
       melanoma.request(this.selectedFile, this.selectedSex, this.selectedAge, this.selectedSite)
         .then(response => {
           let probability = parseFloat(response.data.melanoma_probability) * 100
