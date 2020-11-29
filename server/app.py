@@ -23,7 +23,7 @@ CORS(app)
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-model_path = './trained/fourth_model.pt'
+model_path = './trained/efficient_b1_model_final.pt'
 model = MyNetwork()
 model.load_state_dict(torch.load(model_path, map_location=torch.device(device)))
 num_classes = 2
@@ -34,7 +34,7 @@ model.eval()
 def transform_image(image_bytes):
     my_transforms = transforms.Compose([
         transforms.Resize(255),
-        transforms.CenterCrop(224),
+        transforms.CenterCrop(240),
         transforms.RandomHorizontalFlip(),
         transforms.RandomVerticalFlip(),
         transforms.ToTensor(),
