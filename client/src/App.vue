@@ -33,23 +33,23 @@
                 }}</span>
               </label>
             </image-uploader>
-            <metadata-uploader>
+            <div>
               Sex: <select v-model="selectedSex">
-                <option v-for="option in sexOptions" v-bind:value="option.value">
+                <option v-for="option in sexOptions" :key="option.text" v-bind:value="option.value">
                   {{ option.text }}
                 </option>
               </select>
               Age: <select v-model="selectedAge">
-                <option v-for="option in ageOptions" v-bind:value="option.value">
+                <option v-for="option in ageOptions" :key="option.text" v-bind:value="option.value">
                   {{ option.text }}
                 </option>
               </select>
               Site: <select v-model="selectedSite">
-                <option v-for="option in siteOptions" v-bind:value="option.value">
+                <option v-for="option in siteOptions" :key="option.text" v-bind:value="option.value">
                   {{ option.text }}
                 </option>
               </select>
-            </metadata-uploader>
+            </div>
           </div>
           <v-btn
             color="primary"
