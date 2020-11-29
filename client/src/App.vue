@@ -177,13 +177,10 @@ export default {
         canCancel: false,
       });
       // simulate AJAX
-      setTimeout(() => {
-        loader.hide()
-        this.requestHandler()
-      },1000)                 
+      this.requestHandler(loader)              
     },
 
-    requestHandler() {
+    requestHandler(loader) {
       melanoma.request(this.selectedFile, this.selectedSex, this.selectedAge, this.selectedSite)
         .then(response => {
           let probability = parseFloat(response.data.melanoma_probability) * 100
@@ -191,7 +188,8 @@ export default {
           probability = probability.toFixed(1)
           this.melanomaResult = `${probability}%`
           this.testComplete = true
-          this.$scrollTo(document.getElementById('testResult'), 500, {})
+          this.$scrollTo(document.getElementById('testResult'), 700, {})
+          loader.hide()
         })
         .catch(error => {
           console.log(error)
