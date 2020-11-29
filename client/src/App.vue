@@ -33,28 +33,54 @@
                 }}</span>
               </label>
             </image-uploader>
-            <div>
-              Sex: <select v-model="selectedSex">
-                <option v-for="option in sexOptions" :key="option.text" v-bind:value="option.value">
-                  {{ option.text }}
-                </option>
-              </select>
-              Age: <select v-model="selectedAge">
-                <option v-for="option in ageOptions" :key="option.text" v-bind:value="option.value">
-                  {{ option.text }}
-                </option>
-              </select>
-              Site: <select v-model="selectedSite">
-                <option v-for="option in siteOptions" :key="option.text" v-bind:value="option.value">
-                  {{ option.text }}
-                </option>
-              </select>
+            <div style="margin-top:10px">
+              <v-row align="center" justify="center">
+                <v-col
+                  class="d-flex"
+                  cols="9"
+                  sm="3"
+                >
+                  <v-select
+                    v-model="selectedSex"
+                    :items=sexOptions
+                    item-text="text"
+                    item-value="value"
+                    label="Sex"
+                  ></v-select>
+                </v-col>
+                <v-col
+                  class="d-flex"
+                  cols="9"
+                  sm="3"
+                >
+                  <v-select
+                    v-model="selectedAge"
+                    :items=ageOptions
+                    item-text="text"
+                    item-value="value"
+                    label="Age"
+                  ></v-select>
+                </v-col>
+                <v-col
+                  class="d-flex"
+                  cols="9"
+                  sm="3"
+                >
+                  <v-select
+                    v-model="selectedSite"
+                    :items=siteOptions
+                    item-text="text"
+                    item-value="value"
+                    label="Site"
+                  ></v-select>
+                </v-col>
+              </v-row>
             </div>
           </div>
           <v-btn
             color="primary"
             rounded
-            v-if="selectedFile"
+            v-if="selectedFile && selectedSex && selectedAge && selectedSite"
             @click="onClickRequest"
           >
             Request
@@ -156,9 +182,9 @@ export default {
         {text: 'palms/soles', value: 'palms'},
         {text: 'oral/genital', value: 'oral'}
       ],
-      selectedSex: 'Male',
-      selectedAge: '20',
-      selectedSite: 'head'
+      selectedSex: undefined,
+      selectedAge: undefined,
+      selectedSite: undefined
     }
   },
   methods: {
