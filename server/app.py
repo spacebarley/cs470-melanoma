@@ -20,11 +20,13 @@ CORS(app)
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
+# Use pt file made by our model
 model_path = './trained/efficient_b1_model_final.pt'
 model = MyNetwork()
 model.load_state_dict(torch.load(model_path, map_location=torch.device(device)))
 model.eval()
 
+# Transform given image to fit on our model
 def transform_image(image_bytes):
     my_transforms = transforms.Compose([
         transforms.Resize(255),
@@ -64,12 +66,17 @@ def one_hot_site(site):
         return [0, 0, 0, 0, 0, 1]
     else: assert(0)
 
-def get_prediction(image_bytes, sex, age, site):
+# Make one hot tensors of given metadata
+def create_metadata(sex, age, site):
     arr_sex = one_hot_sex(sex)
     arr_age = one_hot_age(age)
     arr_site = one_hot_site(site)
     metadata = np.array(arr_sex + arr_age + arr_site).astype(np.float32)
-    metadata = torch.from_numpy(metadata).unsqueeze(0)
+    return torch.from_numpy(metadata).unsqueeze(0)    
+
+# Apply given data to model, return melanoma possibility
+def get_prediction(image_bytes, sex, age, site):
+    metadata = create_metadata(sex, age, site)
 
     # Iterate to give randomly transformed image
     output = 0
@@ -80,6 +87,7 @@ def get_prediction(image_bytes, sex, age, site):
     return output / 10
 
 
+# Get predict message, post melanoma possibility as json
 @app.route('/predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
