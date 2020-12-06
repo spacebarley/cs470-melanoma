@@ -4,19 +4,16 @@ import torch
 
 import torch.nn as nn
 
-from torchvision import models
 import torchvision.transforms as transforms
 from PIL import Image
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from efficientnet_pytorch import EfficientNet
 import numpy as np
 
 import sys, os
 sys.path.append(os.path.abspath(os.path.join('..', 'model')))
 
 from model.our_model_revise import MyNetwork
-import timm
 
 app = Flask(__name__)
 CORS(app)
@@ -26,9 +23,6 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 model_path = './trained/efficient_b1_model_final.pt'
 model = MyNetwork()
 model.load_state_dict(torch.load(model_path, map_location=torch.device(device)))
-num_classes = 2
-# model = timm.create_model('tf_efficientnet_b2_ns', pretrained=True, num_classes=num_classes)
-# model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
 model.eval()
 
 def transform_image(image_bytes):
