@@ -13,7 +13,7 @@ import numpy as np
 import sys, os
 sys.path.append(os.path.abspath(os.path.join('..', 'model')))
 
-from model.our_model_revise import MyNetwork
+from model import MyNetwork
 
 app = Flask(__name__)
 CORS(app)
