@@ -11,6 +11,31 @@ In order to run the full project at localhost, you should run both frontend and 
 
 <br></br>
 
+### Project Tree
+```
+.
+├── client                    # frontend
+│   ├── src
+│   │   ├── api               # handle api calls
+│   │   ├── assets            # assets for our service
+│   │   ├── App.vue
+│   │   ├── Footer.vue
+│   │   └── main.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   └── webpack.config.js
+│
+├── model                     # github submodule from model training git repo
+│
+├── server                    # backend
+│   ├── trained               # trained model .pt file is stored here
+│   ├── app.py
+│   └── requirements.txt      # required list of python packages
+├── LICENSE.md
+└── README.md
+```
+
 # Frontend
 
 Frontend is developed with [Vue.js](https://vuejs.org/), a MVVM Javascript framework. Basic designs and UI components are built with [Vuetify](https://vuetifyjs.com/). 
