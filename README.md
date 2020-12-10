@@ -45,6 +45,9 @@ Model folder is Git submodule, so you need to run the following command on your 
 ```bash
 git submodule init && git submodule update
 ```
+
+<br></br>
+
 # Frontend
 
 Frontend is developed with [Vue.js](https://vuejs.org/), a MVVM Javascript framework. Basic designs and UI components are built with [Vuetify](https://vuetifyjs.com/). 
