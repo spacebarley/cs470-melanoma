@@ -27,6 +27,9 @@ In order to run the full project at localhost, you should run both frontend and 
 │   └── webpack.config.js
 │
 ├── model                     # github submodule from model training git repo
+│   ├── model                 # model directory includes trained .pt files
+│   ├── colab                 # runnable code in colab ipynb files
+│   └── src                   # same with colab, but seperated to access in server
 │
 ├── server                    # backend
 │   ├── app.py
@@ -35,6 +38,8 @@ In order to run the full project at localhost, you should run both frontend and 
 └── README.md
 ```
 Each directory have its own README.md and comments. For more info, you can refer directory own README.md
+
+Training/inference codes and .pt files located at model directory (Git submodule). You can check more info at model repo.
 ## Init Git Submodule
 Model folder is Git submodule, so you need to run the following command on your shell to initialize model folder.
 ```bash
