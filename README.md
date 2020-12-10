@@ -29,7 +29,6 @@ In order to run the full project at localhost, you should run both frontend and 
 ├── model                     # github submodule from model training git repo
 │
 ├── server                    # backend
-│   ├── trained               # trained model .pt file is stored here
 │   ├── app.py
 │   └── requirements.txt      # required list of python packages
 ├── LICENSE.md
