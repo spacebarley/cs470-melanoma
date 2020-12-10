@@ -11,7 +11,7 @@ In order to run the full project at localhost, you should run both frontend and 
 
 <br></br>
 
-### Project Tree
+# Project Tree
 ```
 .
 ├── client                    # frontend
@@ -34,7 +34,12 @@ In order to run the full project at localhost, you should run both frontend and 
 ├── LICENSE.md
 └── README.md
 ```
-
+Each directory have its own README.md and comments. For more info, you can refer directory own README.md
+## Init Git Submodule
+Model folder is Git submodule, so you need to run the following command on your shell to initialize model folder.
+```bash
+git submodule init && git submodule update
+```
 # Frontend
 
 Frontend is developed with [Vue.js](https://vuejs.org/), a MVVM Javascript framework. Basic designs and UI components are built with [Vuetify](https://vuetifyjs.com/). 
