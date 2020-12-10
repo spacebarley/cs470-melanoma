@@ -13,7 +13,7 @@ import numpy as np
 import sys, os
 sys.path.append(os.path.abspath(os.path.join('..', 'model')))
 
-from model import MyNetwork
+from model.src.model import MyNetwork
 
 app = Flask(__name__)
 CORS(app)
@@ -21,7 +21,7 @@ CORS(app)
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # Use pt file made by our model
-model_path = './trained/efficient_b1_model_final.pt'
+model_path = '../model/model/smote_model_b1.pt'
 model = MyNetwork()
 model.load_state_dict(torch.load(model_path, map_location=torch.device(device)))
 model.eval()
